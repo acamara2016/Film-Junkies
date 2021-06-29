@@ -1,4 +1,28 @@
-
+#elem{
+    text-align:-webkit-center;
+}
 #elem:hover {
     opacity: 0.99;
+}
+#name{
+    animation: appear 4s infinite linear alternate;
+}
+#average{
+    animation: rotate 2s linear alternate;
+}
+@keyframes appear {
+    from{
+        transform: rotateZ(-10deg);
+    }
+    to{
+        transform: rotateZ(-3deg);
+    } 
+}
+@keyframes rotate {
+    from{
+        box-shadow: 0px 0px;
+    }
+    to{
+        box-shadow: 5px 15px;
+    } 
 }

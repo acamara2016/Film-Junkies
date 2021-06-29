@@ -4,3 +4,43 @@
    box-shadow:'5px 10px';
    width:'300px'
 }
+#elem{
+   text-align:-webkit-center;
+}
+#elem:hover {
+   opacity: 0.99;
+}
+#left{
+   animation: fromLeft 1s linear alternate;
+}
+#right{
+   animation: fromRight 1s linear alternate;
+}
+@keyframes fromLeft {
+   0%{
+       transform: translateX(-800px);
+       opacity: 0.2;
+   }
+   50%{
+      transform: translateX(60px);
+       opacity: 1;
+   } 
+   100%{
+      transform: translateX(0px);
+       opacity: 1;
+   } 
+}
+@keyframes fromRight {
+   0%{
+       transform: translateX(800px);
+       opacity: 0.2;
+   }
+   50%{
+      transform: translateX(-60px);
+       opacity: 1;
+   } 
+   100%{
+      transform: translateX(0px);
+       opacity: 1;
+   } 
+}
