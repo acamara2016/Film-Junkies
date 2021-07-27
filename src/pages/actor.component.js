@@ -7,26 +7,21 @@ export default class Movie extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies: [],
+            actors: [],
             search:null,
             categories:[]
         }
     }
     componentDidMount(){
         window.scrollTo(0, 0);
-        this.getMovies();
+        this.getPersons();
     }
-    getMovies=()=> {
+    getPersons=()=> {
         //https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
-        axios.get(`https://api.themoviedb.org/3/movie/popular?&api_key=${config.api_key}&language=en-US&page=1`)
+        axios.get(`https://api.themoviedb.org/3/person/latest?&api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            console.log(response.data.results)
-            this.setState({movies:response.data.results})
-        })
-        axios.get(`https://api.themoviedb.org/3/genre/movie/list?&api_key=${config.api_key}&language=en-US`)
-        .then((response) => {
-            console.log(response.data.genres)
-            this.setState({categories:response.data.genres})
+            console.log(response.data)
+            this.setState({actors:response.data})
         })
     }
     handleSearch=(event)=>{
@@ -34,13 +29,13 @@ export default class Movie extends React.Component {
         this.setState({search:keyword})
     }
     render() {
-        const searchFilter = this.state.movies.filter((data)=>{
-            if(this.state.search == null)
-                return data
-            else if(data.title.toLowerCase().includes(this.state.search.toLowerCase())){
-                return data
-            }
-        })
+        // const searchFilter = this.state.actors.filter((data)=>{
+        //     if(this.state.search == null)
+        //         return data
+        //     else if(data.title.toLowerCase().includes(this.state.search.toLowerCase())){
+        //         return data
+        //     }
+        // })
         return(
             <div style={{marginTop:'100px'}} className="container-fluid">
                 <nav>

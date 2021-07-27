@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <ParallaxProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ParallaxProvider>,
   document.getElementById('root')
 );
 

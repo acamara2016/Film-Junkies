@@ -1,24 +1,22 @@
 import React from 'react';
-import axios from 'axios';
-import config from '../config/api.config'
-import { Card, Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import './styles.css';
 
-export default class MoviePoster extends React.Component {
-    constructor(props) {
-        super(props);
-
+export default class Cast extends React.Component {
+    constructor(props){
+        super();
     }
-    render() {
+
+    render(){
         return(
             <div id="elem" style={{marginBottom: '20px', height:'100%'}} className="col-sm">
                 <div class="card" style={{width: "18rem"}}>
-                    <Link to={"movie/"+this.props.id}>
-                        <img class="card-img-top" alt="..."  src={"https://image.tmdb.org/t/p/w500"+this.props.image}/>
+                  
+                    <Link to={"actor/"+this.props.id}>
+                        <img src={"https://image.tmdb.org/t/p/original/"+this.props.image} class="card-img-top" alt={this.props.image} />
                     </Link>
+                
                     <div style={{display:'flex', flexDirection:'row', justifyContent: 'center'}} class="card-body">
-                        <p id="average" class="card-text" style={{width:'fit-content',height:'fit-content', marginRight:'20px', padding:'10px',textAlign: "center", color: "black", border:'1px solid', boxShadow:'5px 10px'}}>{this.props.vote_average}</p>
+                        {/* <p id="average" class="card-text" style={{width:'fit-content',height:'fit-content', marginRight:'20px', padding:'10px',textAlign: "center", color: "black", border:'1px solid', boxShadow:'5px 10px'}}>{this.props.name}</p> */}
                         <Link id="more" class="card-text" to={"movie/"+this.props.id} style={{width:'fit-content', height:'fit-content', padding:'10px',textAlign: "center", border:'1px solid', boxShadow:'5px 10px'}}>{this.props.name}</Link>
                     </div>
                 </div>

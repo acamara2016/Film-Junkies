@@ -4,6 +4,10 @@
 #elem:hover {
     opacity: 0.99;
 }
+
+#more:hover{
+    color:'green';
+}
 #name{
     animation: appear 4s infinite linear alternate;
 }

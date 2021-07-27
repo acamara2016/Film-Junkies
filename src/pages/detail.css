@@ -16,6 +16,9 @@
 #right{
    animation: fromRight 1s linear alternate;
 }
+.carousel-inner{
+   height: 400px
+}
 @keyframes fromLeft {
    0%{
        transform: translateX(-800px);

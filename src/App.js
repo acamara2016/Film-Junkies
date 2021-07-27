@@ -3,6 +3,7 @@ import React from 'react';
 import Movie from './pages/movie.component';
 import TvSHow from './pages/tvshow.component';
 import Coming from './pages/coming.component';
+import Error from './pages/error.component';
 import { Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import Details from './pages/detail.component';
@@ -48,13 +49,14 @@ class App extends React.Component {
                   </div>
               </nav>
               
-                <div>
+                <div style={{marginTop:'56px'}}>
                     <Switch>
                         {/* <Route exact path={["/"]} component={Home} /> */}
                         <Route exact path={["/","/movies"]} component={Movie} />
                         <Route exact path={["/tv", "/tv-show"]} component={TvSHow} />
                         <Route exact path={["/:type/:id"]} component={Details} />
                         <Route exact path={["/coming-soon"]} component={Coming} />
+                        <Route component={Error} />
                     </Switch>
                 </div>
             </div>
