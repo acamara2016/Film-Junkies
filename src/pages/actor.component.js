@@ -17,7 +17,6 @@ export default class Movie extends React.Component {
         this.getPersons();
     }
     getPersons=()=> {
-        //https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
         axios.get(`https://api.themoviedb.org/3/person/latest?&api_key=${config.api_key}&language=en-US`)
         .then((response) => {
             console.log(response.data)
@@ -29,13 +28,6 @@ export default class Movie extends React.Component {
         this.setState({search:keyword})
     }
     render() {
-        // const searchFilter = this.state.actors.filter((data)=>{
-        //     if(this.state.search == null)
-        //         return data
-        //     else if(data.title.toLowerCase().includes(this.state.search.toLowerCase())){
-        //         return data
-        //     }
-        // })
         return(
             <div style={{marginTop:'100px'}} className="container-fluid">
                 <nav>

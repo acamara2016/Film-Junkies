@@ -10,6 +10,7 @@ import Details from './pages/detail.component';
 import axios from 'axios';
 import icon from './logo192.png'
 import config from './config/api.config'
+import ActorDetails from './pages/actor.detail.component';
 
 class App extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class App extends React.Component {
                         <Route exact path={["/","/movies"]} component={Movie} />
                         <Route exact path={["/tv", "/tv-show"]} component={TvSHow} />
                         <Route exact path={["/:type/:id"]} component={Details} />
-                        <Route exact path={["/actor/:id"]} component={Details} />
+                        <Route exact path={["/v1/actor/:id"]} component={ActorDetails} />
                         <Route exact path={["/coming-soon"]} component={Coming} />
                         <Route component={Error} />
                     </Switch>

@@ -1,6 +1,6 @@
 #elem{
     text-align:-webkit-center;
-    width: auto;
+    width: min-content;
 }
 #elem:hover {
     opacity: 0.99;
@@ -15,7 +15,7 @@
 #average{
     animation: rotate 2s linear alternate;
 }
-@keyframes appear {
+/* @keyframes appear {
     from{
         transform: rotateZ(-10deg);
     }
@@ -30,4 +30,4 @@
     to{
         box-shadow: 5px 15px;
     } 
-}
+} */
