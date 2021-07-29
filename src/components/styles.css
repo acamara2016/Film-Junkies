@@ -1,5 +1,6 @@
 #elem{
     text-align:-webkit-center;
+    width: auto;
 }
 #elem:hover {
     opacity: 0.99;

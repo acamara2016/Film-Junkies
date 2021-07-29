@@ -59,60 +59,32 @@ export default class Details extends React.Component {
         const youtube = this.state.youtube
         return(
              <div>
-                    <div style={{height:'100vh' ,backgroundSize:'cover', backgroundPosition:'center',backgroundImage:`url(https://image.tmdb.org/t/p/original${detail.backdrop_path})`}}>
-                        <div style={{textAlign:'start'}}>
-                            <div>
-                                <div style={{background:'rgb(197 191 191 / 14%)', height:'100%', paddingTop:'80px'}}>
-
-                                <div style={{height:'100vh', display:'flex'}}>
-        
-                               
-                                    <div style={{height:'max-content', alignSelf:'center'}}>
-                                        <img width='350px' src={"https://image.tmdb.org/t/p/original"+detail.poster_path} />
-                                    </div>
-                                    <div style={{ float:'right', marginLeft:'20px', alignSelf:'center'}}>
-                                        {detail.name && <p id="left" style={{color:'white', border: '1px solid', boxShadow:'5px 10px', width:'300px', padding:'10px', backgroundColor:'#00000087'}}>{detail.name}</p>}
-                                        {detail.original_title && <p id="left" style={{textAlign:'start', color:'white', border: '1px solid', boxShadow:'5px 10px', width:'300px', padding:'10px', backgroundColor:'#00000087'}}>{detail.original_title}</p>}
-                                        {detail.release_date && <p id="right" style={{textAlign:'start', color:'white', border: '1px solid', boxShadow:'5px 10px', width:'300px', padding:'10px', backgroundColor:'#00000087'}}>{detail.release_date} {detail.runtime}m</p>}
-                                        {detail.vote_average && <p id="left" style={{textAlign:'start', color:'white', border: '1px solid', boxShadow:'5px 10px', width:'300px', padding:'10px', backgroundColor:'#00000087'}}>{detail.vote_average}</p>}
-                                        <p>Overview</p>
-                                        {detail.overview && <p>{detail.overview}</p>}
-                                        <a class="btn btn-primary" href={detail.homepage}>WATCH</a>
-                                        
-                                    </div>
-            
-                                </div>
-                                {youtube.map((youtube)=>{
-                                    return <YouTube videoId={youtube.key} id={youtube.id}/>
-                                })}
-                                <p style={{color:'black', textAlign:'center'}}>Casts</p>
-
-                                <div class="row">
-                                    {
-                                        this.state.casts && this.state.casts.map((cast)=>{
-                                            return (
-                                                <Cast image={cast.profile_path} name={cast.name}/>
-                                            );
-                                        })
-                                    }
-                                </div>
-                                {/* <p style={{color:'black', textAlign:'center'}}>Crews</p>
-                                <div class="row">
-                                    {
-                                        this.state.crews.map((cast)=>{
-                                            {cast.profile_path && 
-                                                <Cast image={cast.profile_path} name={cast.name}/>
-                                            }
-                                        })
-                                    }
-                                </div> */}
-                        </div>
-                        
-                            </div>
-                            
-                        </div>
-                        
+                 <div style={{height:'100vh' ,backgroundSize:'cover', backgroundPosition:'center',backgroundImage:`url(https://image.tmdb.org/t/p/original${detail.backdrop_path})`}} class="px-4 py-5 my-5 text-center">
+                    {/* <img class="d-block mx-auto mb-4" src={"https://image.tmdb.org/t/p/original"+detail.poster_path} alt="" width="72" height="57"/> */}
+                    <br/><br/>
+                    {detail.name && <h1 class="display-5 fw-bold lh-1 mb-3">{detail.name}</h1>}
+                    {detail.original_title && <h1 class="display-5 fw-bold lh-1 mb-3">{detail.original_title}</h1>}
+                    <div class="col-lg-6 mx-auto">
+                    {detail.overview && <p class="lead">{detail.overview}</p>}
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Find tickets</button>
+                        <button style={{marginLeft:'10px'}} type="button" class="btn btn-outline-secondary btn-lg px-4">Trailer</button>
                     </div>
+                    </div>
+                </div>
+                {youtube.map((youtube, i)=>{
+                    return <YouTube videoId={youtube.key} id={youtube.id}/>
+                })}
+                <p style={{color:'black', textAlign:'center'}}>Casts</p>
+                <div class="row">
+                    {
+                        this.state.casts && this.state.casts.map((cast)=>{
+                            return (
+                                <Cast id={cast.id} image={cast.profile_path} name={cast.name}/>
+                            );
+                        })
+                    }
+                </div>
             </div>
         )
     }

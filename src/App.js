@@ -55,6 +55,7 @@ class App extends React.Component {
                         <Route exact path={["/","/movies"]} component={Movie} />
                         <Route exact path={["/tv", "/tv-show"]} component={TvSHow} />
                         <Route exact path={["/:type/:id"]} component={Details} />
+                        <Route exact path={["/actor/:id"]} component={Details} />
                         <Route exact path={["/coming-soon"]} component={Coming} />
                         <Route component={Error} />
                     </Switch>

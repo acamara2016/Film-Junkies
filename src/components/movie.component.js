@@ -23,6 +23,7 @@ export default class MoviePoster extends React.Component {
                     </div>
                 </div>
             </div>
+            
         );
     }
 }
