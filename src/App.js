@@ -10,6 +10,7 @@ import Details from './pages/detail.component';
 import axios from 'axios';
 import icon from './logo192.png'
 import config from './config/api.config'
+import Welcome from './pages/welcome.component';
 import ActorDetails from './pages/actor.detail.component';
 
 class App extends React.Component {
@@ -27,7 +28,7 @@ class App extends React.Component {
       <div className="App">
           <div>   
                 <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                  <Link to="/" class="navbar-brand" href="#">
+                  <Link to="/welcome" class="navbar-brand" href="#">
                     <img src={icon} width="30" height="30" class="d-inline-block align-top" alt=""/>
                     Film-Junkies
                   </Link>
@@ -58,6 +59,7 @@ class App extends React.Component {
                         <Route exact path={["/:type/:id"]} component={Details} />
                         <Route exact path={["/v1/actor/:id"]} component={ActorDetails} />
                         <Route exact path={["/coming-soon"]} component={Coming} />
+                        <Route exact path={["/welcome"]} component={Welcome} />
                         <Route component={Error} />
                     </Switch>
                 </div>

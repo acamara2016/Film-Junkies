@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
+import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
-import { ParallaxProvider } from 'react-scroll-parallax';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <ParallaxProvider>
     <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </ParallaxProvider>,
+    </BrowserRouter>,
   document.getElementById('root')
 );
 

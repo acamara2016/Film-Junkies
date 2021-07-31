@@ -43,43 +43,45 @@ export default class ActorDetails extends React.Component {
         const detail = this.state.details
         const movies = this.state.movies;
         const tvs = this.state.tvs;
+        let bio_short = detail.biography
+        // if(detail.biography !== null){
+        //     bio_short.substring(0,50)
+        // }
         const production_companies = detail.production_companies
         // console.log(detail.biography)
         return(
              <div className="container" style={{color:'black', maxWidth:'-webkit-fill-available', textAlign:'start'}}>
                 <div class="d-flex align-items-start">
                 <div style={{marginTop:"50px"}} class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Scores</button>
-                    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Biography</button>
+                    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Bio</button>
                     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Movies</button>
-                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Tv-shows</button>
+                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Shows</button>
                 </div>
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"> 
                         <div style={{margin:'30px'}} className="row">
-                            <div className="col">
-                                <h1  >{detail.name}</h1>
+                            <div className="col-sm-4">
+                                <h1 >{detail.name}</h1>
                                 <Cast id={detail.id} image={detail.profile_path}/>
                             </div>
-                            <div className="col">
-               
+                            <div style={{margin: '20px',alignSelf: 'center', border:'1px solid', boxShadow:'-10px 10px 1px'}} className="col">
+                                <span>Birthdate {detail.birthday}</span><br/>
+                                <span>From: {detail.place_of_birth}</span><br/>
+                                <span>{detail.known_for_department}</span><br/>
+                                {detail.deathday===null && <span style={{color:'green'}}>Alive</span>}<br/>
+                                {detail.deathday!==null && <span style={{color:'red'}}>{detail.deathday}</span>}<br/>
                                 <span>{detail.popularity}</span><br/>
                                 <a href={`https://www.imdb.com/name/${detail.imdb_id}`}>imdb</a>
+                            </div>
+                            <div style={{alignSelf: 'center', border: '1px solid', boxShadow: '-10px 10px 1px', padding: '30px'}} className="col-lg-6">
+                                {/* <span>Casted in: {movies.cast.length()} movies</span><br/>
+                                <span>And in: {tvs.cast.length()} tv-show</span> */}
+                                <span>{bio_short}</span><br/>
                             </div>
                         </div>
                         
                     </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div style={{margin:'30px'}} className="row">
-                            <div className="col">
-                            <h1  >{detail.name}</h1>
-                                <Cast id={detail.id} image={detail.profile_path}/>
-                            </div>
-                            <div className="col">
-                                <p style={{fontSize:'13px'}}>{detail.biography}</p>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <div style={{margin:"30px"}} className="row">
                         <h1  >{detail.name}</h1>
@@ -98,22 +100,7 @@ export default class ActorDetails extends React.Component {
                     </div>
                 </div>
                 </div>
- 
-                    {/* <div className="row">
-                        <div style={{margin:'60px'}} className="col-sm">
-                            <Cast id={detail.id} image={detail.profile_path}/>
-                        </div>
-                        <div style={{margin:'60px'}} className="col-lg">
-                        <h1 class="display-5 fw-bold lh-1 mb-3">{detail.name}</h1>
-                        <span>{detail.popularity}</span>
-                        <a href={`https://www.imdb.com/name/${detail.imdb_id}`}>imdb</a>
-                        <br/><br/>
-                        <p>{detail.biography}</p>
-                        </div>
-                    </div> */}
-                   
                     </div>
         )
     }
 }
- 

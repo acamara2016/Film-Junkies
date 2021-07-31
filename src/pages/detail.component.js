@@ -1,18 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import config from '../config/api.config'
 import './detail.css'
 import Cast from '../components/cast.component'
 import { Parallax, Background } from 'react-parallax';
 import YouTube from 'react-youtube';
+import {Modal, Button} from 'react-bootstrap/';
+import GeoLocation from '../utils/Geolocation';
 
-const Container = () => (
-    <Parallax strength={300}>
-        <Background className="custom-bg">
-            <img src="http://www.fillmurray.com/500/320" alt="fill murray" />
-        </Background>
-    </Parallax>
-);
+ 
 
 export default class Details extends React.Component {
     constructor(props) {
@@ -59,41 +55,70 @@ export default class Details extends React.Component {
         const youtube = this.state.youtube
         return(
              <div>
-                 <div style={{height:'100vh' ,backgroundSize:'cover', backgroundPosition:'center',backgroundImage:`url(https://image.tmdb.org/t/p/original${detail.backdrop_path})`}} class="px-4 py-5 my-5 text-center">
-                    {/* <img class="d-block mx-auto mb-4" src={"https://image.tmdb.org/t/p/original"+detail.poster_path} alt="" width="72" height="57"/> */}
-                    <br/><br/>
-                    {detail.name && <h1 class="display-5 fw-bold lh-1 mb-3">{detail.name}</h1>}
-                    {detail.original_title && <h1 class="display-5 fw-bold lh-1 mb-3">{detail.original_title}</h1>}
-                    <div class="col-lg-6 mx-auto">
-                    {detail.overview && <p class="lead">{detail.overview}</p>}
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Find tickets</button>
-                        <button style={{marginLeft:'10px'}} type="button" class="btn btn-outline-secondary btn-lg px-4">Trailer</button>
+                 <section style={{color: 'black'}} class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        {detail.name && <h1 class="fw-light">{detail.name}</h1>}
+                        {detail.original_title && <h1 class="fw-light">{detail.original_title}</h1>}
+                        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+                        <p>
+                        {youtube.map((youtube, i)=>{
+                            if(youtube.type=="Trailer")
+                                return <Example index={i} videoId={youtube.key} key={youtube.key} id={youtube.id}/>
+                            })}
+                        <a href="#" class="btn btn-secondary my-2">Showtimes</a>
+                        </p>
                     </div>
                     </div>
-                </div>
-                {youtube.map((youtube, i)=>{
-                    return <YouTube videoId={youtube.key} id={youtube.id}/>
-                })}
-                <p style={{color:'black', textAlign:'center'}}>Casts</p>
-                <div class="row">
-                    {
-                        this.state.casts && this.state.casts.map((cast)=>{
-                            return (
-                                <Cast id={cast.id} image={cast.profile_path} name={cast.name}/>
-                            );
-                        })
-                    }
+                </section>
+ 
+                <div class="album py-5 bg-light">
+                    <div class="container">
+                        <p style={{color:'black', textAlign:'center'}}>Casts</p>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {this.state.casts && this.state.casts.map((cast)=>{
+                                return (
+                                    <Cast id={cast.id} image={cast.profile_path} name={cast.name}/>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-const View = (props) => {
-    return(
-        <div>
-            <p>{props.data.length}</p>
-        </div>
-    )
-}
+function Example(props) {
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+    return (
+      <>
+        <Button style={{margin:'20px'}} variant="primary" onClick={handleShow}>
+          Trailer {props.index}
+        </Button>
+  
+        <Modal size="lg" centered show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Youtube</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <YouTube videoId={props.videoId} id={props.id}/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
+  
+ 

@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  width:fit-content;
+  width:-webkit-fill-available;
 }
 body{
-  color: #edf5e1;
+  color: black;
 }
 
 .App-logo {
