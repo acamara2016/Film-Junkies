@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="App">
+      <div className="App bg-dark">
           <div>   
                 <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                   <Link to="/welcome" class="navbar-brand" href="#">
@@ -63,6 +63,15 @@ class App extends React.Component {
                         <Route component={Error} />
                     </Switch>
                 </div>
+                <footer class="text-muted py-5 bg-dark navbar-dark">
+                <div class="container">
+                  <p class="float-end mb-1">
+                    <a href="#">Back to top</a>
+                  </p>
+                  <p class="mb-1">FilmJunkies © 2021</p>
+                  <p class="mb-0">Want to join our Community? <a href="/">Visit the homepage</a> or read our <a href="https://www.themoviedb.org/">getting started guide</a>.</p>
+                </div>
+              </footer>
             </div>
       </div>
     );

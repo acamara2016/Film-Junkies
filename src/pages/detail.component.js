@@ -74,12 +74,18 @@ export default class Details extends React.Component {
  
                 <div class="album py-5 bg-light">
                     <div class="container">
-                        <p style={{color:'black', textAlign:'center'}}>Casts</p>
+                    <h3 style={{color:'black', textAlign:'center'}}>Trailers</h3>
+                    {youtube.map((youtube, i)=>{
+                            if(youtube.type=="Trailer")
+                                return <YouTube videoId={youtube.key} id={youtube.id}/>
+                            })}
+                        <h3 style={{color:'black', textAlign:'center'}}>Casts</h3>
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                             {this.state.casts && this.state.casts.map((cast)=>{
-                                return (
-                                    <Cast id={cast.id} image={cast.profile_path} name={cast.name}/>
-                                );
+                                if(cast.profile_path!=null)
+                                    return (
+                                        <Cast id={cast.id} image={cast.profile_path} name={cast.name}/>
+                                    );
                             })}
                         </div>
                     </div>

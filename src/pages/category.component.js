@@ -19,7 +19,6 @@ export default class Category extends React.Component {
         //https://api.themoviedb.org/3/discover/movie?api_key=4caf30ffa3252eef2b9fa4dbc2f5554a&with_genres=28
         axios.get(`https://api.themoviedb.org/3/discover/${this.props.type}?&api_key=${config.api_key}&language=en-US&with_genres=${this.props.id}`)
         .then((response) => {
-            console.log(response.data.results)
             this.setState({movies:response.data.results})
         })
     }
@@ -43,11 +42,11 @@ export default class Category extends React.Component {
         })
         return(
             <div style={{margin:'20px'}} className="container-fluid">
-                    <div class="row form-inline">
-                        {/* <Form.Input style={{background: "transparent", borderColor:"#007BFF",}} value={this.state.search} placeholder="Search post" onChange={(e)=>this.handleSearch(e)} type="text" /> */}
+                    {/* <div class="row form-inline">
                         <input style={{width:'100%', marginBottom:'20px', marginLeft:'40px', marginRight:'40px'}} class="form-control" value={this.state.search} type="search" placeholder="Search" onChange={(e)=>this.handleSearch(e)} aria-label="Search"/>
-                    </div>
-                    <div className="row">
+                    </div> */}
+                    <h3 style={{textAlign: 'start'}}>{this.props.name}</h3>
+                    <div style={{height: 'min-content', scrollBehavior: 'smooth', overflowY:'auto'}} className="row flex-row flex-nowrap">
                         {this.props.type === 'movie' && searchFilter.map((movie)=>{
                             return <MoviePoster id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>
                         })}

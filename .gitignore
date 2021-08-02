@@ -2,3 +2,5 @@ node_modules
 build
 ../build
 yarn.lock
+.DS_Store
+.vscode

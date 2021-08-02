@@ -42,7 +42,7 @@ export default class All extends React.Component {
                         {/* <Form.Input style={{background: "transparent", borderColor:"#007BFF",}} value={this.state.search} placeholder="Search post" onChange={(e)=>this.handleSearch(e)} type="text" /> */}
                         <input style={{width:'100%', marginBottom:'20px'}} class="form-control" value={this.state.search} type="search" placeholder="Search" onChange={(e)=>this.handleSearch(e)} aria-label="Search"/>
                     </div>
-                    <div className="row">
+                    <div className="row flex-row flex-nowrap">
                         {searchFilter.map((movie)=>{
                             return <MoviePoster id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>
                         })}

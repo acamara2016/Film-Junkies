@@ -5,6 +5,9 @@
 #elem:hover {
     opacity: 0.99;
 }
+.card-block {
+    min-height: 220px;
+}
 
 #more:hover{
     color:'green';
