@@ -41,11 +41,11 @@ export default class Category extends React.Component {
             }
         })
         return(
-            <div style={{margin:'20px'}} className="container-fluid">
+            <div style={{margin:'20px', color:'black'}} className="container-fluid">
                     {/* <div class="row form-inline">
                         <input style={{width:'100%', marginBottom:'20px', marginLeft:'40px', marginRight:'40px'}} class="form-control" value={this.state.search} type="search" placeholder="Search" onChange={(e)=>this.handleSearch(e)} aria-label="Search"/>
                     </div> */}
-                    <h3 style={{textAlign: 'start'}}>{this.props.name}</h3>
+                    <h3 style={{textAlign: 'start', color:'white'}}>{this.props.name}</h3>
                     <div style={{height: 'min-content', scrollBehavior: 'smooth', overflowY:'auto'}} className="row flex-row flex-nowrap">
                         {this.props.type === 'movie' && searchFilter.map((movie)=>{
                             return <MoviePoster id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>

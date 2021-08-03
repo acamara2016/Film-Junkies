@@ -29,7 +29,7 @@ export default class Details extends React.Component {
     getDetails=()=> {
         axios.get(`https://api.themoviedb.org/3/${this.props.match.params.type}/${this.props.match.params.id}?&api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            //console.log(response.data)
+            console.log(response.data)
             this.setState({details:response.data})
         })
         axios.get(`https://api.themoviedb.org/3/${this.props.match.params.type}/${this.props.match.params.id}/images?&api_key=${config.api_key}&language=en-US`)
@@ -39,7 +39,7 @@ export default class Details extends React.Component {
         })
         axios.get(`https://api.themoviedb.org/3/${this.props.match.params.type}/${this.props.match.params.id}/credits?&api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            //console.log(response.data)
+            console.log(response.data)
             this.setState({casts:response.data.cast})
             this.setState({crews:response.data.crew})
         })
@@ -53,6 +53,12 @@ export default class Details extends React.Component {
         const detail = this.state.details
         const production_companies = detail.production_companies
         const youtube = this.state.youtube
+        // console.log(detail.over)
+        //const short = fn(detail.overview, 142);
+        const opts = {
+            height: '390',
+            width: '350',
+        };
         return(
              <div>
                  <section style={{color: 'black'}} class="py-5 text-center container">
@@ -60,12 +66,12 @@ export default class Details extends React.Component {
                     <div class="col-lg-6 col-md-8 mx-auto">
                         {detail.name && <h1 class="fw-light">{detail.name}</h1>}
                         {detail.original_title && <h1 class="fw-light">{detail.original_title}</h1>}
-                        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+                        {/* <p class="lead text-muted">{short}</p> */}
                         <p>
-                        {youtube.map((youtube, i)=>{
+                        {/* {youtube.map((youtube, i)=>{
                             if(youtube.type=="Trailer")
                                 return <Example index={i} videoId={youtube.key} key={youtube.key} id={youtube.id}/>
-                            })}
+                            })} */}
                         <a href="#" class="btn btn-secondary my-2">Showtimes</a>
                         </p>
                     </div>
@@ -77,7 +83,7 @@ export default class Details extends React.Component {
                     <h3 style={{color:'black', textAlign:'center'}}>Trailers</h3>
                     {youtube.map((youtube, i)=>{
                             if(youtube.type=="Trailer")
-                                return <YouTube videoId={youtube.key} id={youtube.id}/>
+                                return <YouTube opts={opts} videoId={youtube.key} id={youtube.id}/>
                             })}
                         <h3 style={{color:'black', textAlign:'center'}}>Casts</h3>
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -93,6 +99,9 @@ export default class Details extends React.Component {
             </div>
         )
     }
+}
+function fn(text, count){
+    return text.slice(0, count) + (text.length > count ? "..." : "");
 }
 
 function Example(props) {
@@ -112,7 +121,7 @@ function Example(props) {
             <Modal.Title>Youtube</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <YouTube videoId={props.videoId} id={props.id}/>
+            <YouTube  videoId={props.videoId} id={props.id}/>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

@@ -53,16 +53,14 @@ export default class Movie extends React.Component {
                 return data
             }
         })
-        // console.log(this.state.playing[0])
-        // const pop = this.state.playing[0];
-        // console.log(pop)
-        
+ 
+        const random = Math.floor(Math.random() * 18)+1;
         return(
             <div style={{marginTop:'100px'}} className="container-fluid">
                 {this.state.playing.map((playing, index) => {
                     const short = fn(playing.overview, 142);
-                    if(index === 0)
-                        return (<div style={{textAlign:'start',backgroundImage:'url(https://image.tmdb.org/t/p/original/'+playing.backdrop_path+')',  maxHeight:'500px',minHeight:'400px', backgroundSize:'cover'}} class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+                    if(index === random)
+                        return (<div style={{textAlign:'start',backgroundImage:'url(https://image.tmdb.org/t/p/original/'+playing.backdrop_path+')',  maxHeight:'600px',minHeight:'500px', backgroundSize:'cover', loading:'lazy'}} class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                         <div class="col-md-6 px-0">
                         <h1 class="display-4 fst-italic">{playing.original_title}</h1>
                         <p class="lead my-3">{short}</p>

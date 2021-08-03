@@ -8,7 +8,7 @@ import './styles.css';
 export default class TvPoster extends React.Component {
     render() {
         return(
-            <div style={{padding:'20px', width:'165px'}} className="col">
+            <div style={{padding:'20px', width:'165px'}} className="col cont">
                     {this.props.redirect && 
                     <Link to={"../../tv/"+this.props.id}>
                         <img loading="lazy" width="150" height="225" style={{borderRadius:'15px'}}   alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
@@ -17,6 +17,9 @@ export default class TvPoster extends React.Component {
                     <Link to={"tv/"+this.props.id}>
                         <img width="150" height="225" style={{borderRadius:'15px'}}  alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
                     </Link>} 
+                    <div class="middle">
+                        <a href={"/movie/"+this.props.id} class="text btn btn-primary">{this.props.name}</a>
+                    </div>
                     <div style={{position:'absolute', top:'10px', left:'10px', padding:'10px', border:'1px solid', background:'white', borderRadius:'20px'}}> 
                         <p id="average" class="card-text">{this.props.vote_average}</p>
                     </div>

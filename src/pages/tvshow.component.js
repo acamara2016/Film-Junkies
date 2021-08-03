@@ -48,7 +48,7 @@ export default class TvShow extends React.Component {
                 {this.state.movies.map((playing, index) => {
                     const short = fn(playing.overview, 142);
                     if(index === 0)
-                        return (<div style={{textAlign:'start',backgroundImage:'url(https://image.tmdb.org/t/p/original/'+playing.backdrop_path+')', maxHeight:'500px',minHeight:'400px', backgroundSize:'cover'}} class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+                        return (<div style={{textAlign:'start',backgroundImage:'url(https://image.tmdb.org/t/p/original/'+playing.backdrop_path+')', maxHeight:'600px',minHeight:'500px', backgroundSize:'cover'}} class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                         <div class="col-md-6 px-0">
                         <h1 class="display-4 fst-italic">{playing.name}</h1>
                         <p class="lead my-3">{short}</p>
