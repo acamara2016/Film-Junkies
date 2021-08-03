@@ -3,6 +3,7 @@ import axios from 'axios';
 import config from '../config/api.config'
 import TvPoster from '../components/tv.component'
 import Category from './category.component'
+import './detail.css';
 
 export default class TvShow extends React.Component {
     constructor(props) {
@@ -18,15 +19,12 @@ export default class TvShow extends React.Component {
         this.getMovies();
     }
     getMovies=()=> {
-        //https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
         axios.get(`https://api.themoviedb.org/3/tv/popular?&api_key=${config.api_key}&language=en-US&page=1`)
         .then((response) => {
-            console.log(response.data.results)
             this.setState({movies:response.data.results})
         })
         axios.get(`https://api.themoviedb.org/3/genre/tv/list?&api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            console.log(response.data.genres)
             this.setState({categories:response.data.genres})
         })
     }
@@ -49,9 +47,9 @@ export default class TvShow extends React.Component {
                     const short = fn(playing.overview, 142);
                     if(index === 0)
                         return (<div style={{textAlign:'start',backgroundImage:'url(https://image.tmdb.org/t/p/original/'+playing.backdrop_path+')', maxHeight:'600px',minHeight:'500px', backgroundSize:'cover'}} class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-                        <div class="col-md-6 px-0">
-                        <h1 class="display-4 fst-italic">{playing.name}</h1>
-                        <p class="lead my-3">{short}</p>
+                        <div class="col-md-6 px-0 bg-text">
+                        <h1 style={{fontSize:'xx-large', color:'white'}} class="display-4 fst-italic">{playing.name}</h1>
+                        <p style={{fontSize:'inherit', color:'white'}} class="lead my-3">{short}</p>
                         <p class="lead mb-0"><a href={"/movie/"+playing.id} class="btn btn-primary text-white fw-bold">Details</a></p>
                         </div></div>)
                 })}
