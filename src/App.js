@@ -4,6 +4,10 @@ import Movie from './pages/movie.component';
 import TvSHow from './pages/tvshow.component';
 import Coming from './pages/coming.component';
 import Error from './pages/error.component';
+import Login from './pages/signin.component';
+import SignUp from './pages/signup.component';
+import Profile from './pages/profile.component';
+import AuthService from './services/auth.service';
 import { Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import Details from './pages/detail.component';
@@ -19,48 +23,76 @@ class App extends React.Component {
     this.state = {
         movies: [],
         categories:[],
-        search:null
+        search:null,
+        guest:[],
     }
-}
-
+  }
+  componentDidMount(){
+    const user = AuthService.fetchCurrentUser();
+    if(user){
+      this.setState({
+        guest: user,
+      })
+    }
+  }
+  logOut() {
+    AuthService.signout();
+    window.location.href = "http://localhost:3000/movies";
+  }
   render(){
+    const {guest} = this.state;
+    console.log(guest.success)
     return (
       <div className="App bg-dark">
           <div>   
-                <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                  <Link to="/welcome" class="navbar-brand" href="#">
-                    <img src={icon} width="30" height="30" class="d-inline-block align-top" alt=""/>
-                    Film-Junkies
-                  </Link>
-                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span className="navbar-toggler-icon"></span>
-                  </button>
-                  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul className="navbar-nav mr-auto">
-                      <li className="nav-item">
-                          <Link className="nav-link" to="/movies">Movies</Link>
-                      </li>
-                      <li className="nav-item">
-                          <Link className="nav-link" to="/tv-show">TV</Link>
-                      </li>
-
-                      <li className="nav-item">
-                          <Link className="nav-link" to="/coming-soon">Coming Soon</Link>
-                      </li>
-                      </ul>
-                  </div>
-              </nav>
               
                 <div style={{marginTop:'56px'}}>
                     <Switch>
+                    <Route exact path={["/register"]} component={SignUp} />
+                    <div>
+                    <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+                            <Link to="/welcome" class="navbar-brand" href="#">
+                              <img src={icon} width="30" height="30" class="d-inline-block align-top" alt=""/>
+                              Film-Junkies
+                            </Link>
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="navbar-nav mr-auto">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/movies">Movies</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/tv-show">TV</Link>
+                                </li>
+
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/coming-soon">Coming Soon</Link>
+                                </li>
+                                <li class="nav-item">
+                                  {guest!=null && <Link className="nav-link" to="/profile">Guest</Link>}
+                                  {guest.success===undefined && <Link className="nav-link" to="/register">Register</Link>}
+                                </li>
+                                </ul>
+                            </div>
+                        </nav>
                         {/* <Route exact path={["/"]} component={Home} /> */}
                         <Route exact path={["/","/movies"]} component={Movie} />
                         <Route exact path={["/tv", "/tv-show"]} component={TvSHow} />
-                        <Route exact path={["/:type/:id"]} component={Details} />
-                        <Route exact path={["/v1/actor/:id"]} component={ActorDetails} />
+                        <Route exact path={["/:type/:id"]}>
+                          <Details guest={guest}/>
+                        </Route>
+                        <Route exact path={["/v1/actor/:id"]}>
+                          <ActorDetails guest={guest}/>
+                        </Route>
                         <Route exact path={["/coming-soon"]} component={Coming} />
                         <Route exact path={["/welcome"]} component={Welcome} />
-                        <Route component={Error} />
+                        <Route exact path="/profile">
+                          <Profile guest={guest}/>
+                        </Route>
+                       
+                        </div>
                     </Switch>
                 </div>
                 <footer class="text-muted py-5 bg-dark navbar-dark">

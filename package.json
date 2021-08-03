@@ -19,6 +19,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-scroll-parallax": "^2.4.0",
+    "react-validation": "^3.0.7",
     "react-youtube": "^7.13.1",
     "web-vitals": "^1.0.1"
   },

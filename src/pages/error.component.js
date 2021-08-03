@@ -8,7 +8,8 @@ export default class Error extends React.Component {
     render(){
         return(
             <div style={{height:'100vh'}}>
-                <Animate lottie={animation}  lottie={animation} width={700} height={500}/>
+                <br/><br/><br/>
+                <Animate lottie={animation}  lottie={animation} width={400} height={500}/>
             </div>
         )
     }

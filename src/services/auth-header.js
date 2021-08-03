@@ -1,8 +1,8 @@
 export default function headers(){
-    const user = JSON.parse(localStorage.getItem('user'));
-    if(user.accessToken){
-        return {'x-access-token': user.accessToken};
-    }else{
-        return {};
+    const client = JSON.parse(localStorage.getItem('client'));
+    if(client.accessToken){
+        return { 'x-access-token': client.accessToken };   
+    } else {
+      return {};
     }
 }
