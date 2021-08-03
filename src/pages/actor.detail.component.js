@@ -4,7 +4,7 @@ import config from '../config/api.config'
 import './detail.css'
 import Cast from '../components/cast.component';
 import MoviePoster from '../components/movie.component';
- 
+import TvPoster from '../components/tv.component';
 
 export default class ActorDetails extends React.Component {
     constructor(props) {
@@ -25,17 +25,14 @@ export default class ActorDetails extends React.Component {
     getDetails=()=> {
         axios.get(`https://api.themoviedb.org/3/person/${this.props.match.params.id}?&api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({details:response.data})
         })
         axios.get(`https://api.themoviedb.org/3/person/${this.props.match.params.id}/movie_credits?api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({movies:response.data.cast})
         })
         axios.get(`https://api.themoviedb.org/3/person/${this.props.match.params.id}/tv_credits?api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({tvs:response.data.cast})
         })
     }
@@ -44,11 +41,7 @@ export default class ActorDetails extends React.Component {
         const movies = this.state.movies;
         const tvs = this.state.tvs;
         let bio_short = detail.biography
-        // if(detail.biography !== null){
-        //     bio_short.substring(0,50)
-        // }
-        const production_companies = detail.production_companies
-        // console.log(detail.biography)
+
         return(
              <div className="container" style={{color:'black', maxWidth:'-webkit-fill-available', textAlign:'start'}}>
                 <div class="d-flex align-items-start">
@@ -74,8 +67,6 @@ export default class ActorDetails extends React.Component {
                                 <a href={`https://www.imdb.com/name/${detail.imdb_id}`}>imdb</a>
                             </div>
                             <div style={{alignSelf: 'center', border: '1px solid', boxShadow: '-10px 10px 1px', padding: '30px'}} className="col-lg-6">
-                                {/* <span>Casted in: {movies.cast.length()} movies</span><br/>
-                                <span>And in: {tvs.cast.length()} tv-show</span> */}
                                 <span>{bio_short}</span><br/>
                             </div>
                         </div>
@@ -84,9 +75,10 @@ export default class ActorDetails extends React.Component {
                     
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <div style={{margin:"30px"}} className="row">
-                        <h1  >{detail.name}</h1>
+                        <h1>{detail.name}</h1>
                         {movies.map((movie)=>{
-                           return (<MoviePoster redirect="../" id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>)
+                            if(movie.poster_path!=null)
+                                return (<MoviePoster redirect="../" id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>)
                         })}
                         </div>
                     </div>
@@ -94,7 +86,8 @@ export default class ActorDetails extends React.Component {
                         <div style={{margin:"30px"}} className="row">
                         <h1  >{detail.name}</h1>
                             {tvs.map((movie)=>{
-                                return (<MoviePoster redirect="../" id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>)
+                                if(movie.poster_path!=null)
+                                    return (<TvPoster redirect="../" id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.name} vote_average={movie.vote_average} key={movie.id}/>)
                             })}
                         </div>
                     </div>

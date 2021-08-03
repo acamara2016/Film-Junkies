@@ -19,7 +19,6 @@ export default class Movie extends React.Component {
     getPersons=()=> {
         axios.get(`https://api.themoviedb.org/3/person/latest?&api_key=${config.api_key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({actors:response.data})
         })
     }
