@@ -35,14 +35,14 @@ export default class Coming extends React.Component {
             }
         })
         return(
-            <div style={{marginTop:'100px'}} className="container-fluid">
-                    <div class="row form-inline">
-                        {/* <Form.Input style={{background: "transparent", borderColor:"#007BFF",}} value={this.state.search} placeholder="Search post" onChange={(e)=>this.handleSearch(e)} type="text" /> */}
+            <div style={{marginTop:'100px', overflowY: 'hidden'}} className="container-fluid">
+                    {/* <div class="row form-inline">
                         <input style={{width:'100%', marginBottom:'20px', marginLeft:'40px', marginRight:'40px'}} class="form-control" value={this.state.search} type="search" placeholder="Search" onChange={(e)=>this.handleSearch(e)} aria-label="Search"/>
-                    </div>
-                    <div className="row">
+                    </div> */}
+                    <div style={{overflowY:'hidden'}} className="row">
                         {searchFilter.map((movie)=>{
-                            return <MoviePoster id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>
+                            if(movie.poster_path!=null)
+                                return <MoviePoster id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>
                         })}
                     </div>
             </div>

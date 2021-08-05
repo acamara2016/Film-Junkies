@@ -51,6 +51,7 @@ export default class Details extends React.Component {
     }
     render() {
         const detail = this.state.details
+        console.log(detail)
         const production_companies = detail.production_companies
         const youtube = this.state.youtube
         // console.log(detail.over)
@@ -61,24 +62,27 @@ export default class Details extends React.Component {
         };
         return(
              <div>
-                 <section style={{color: 'black'}} class="py-5 text-center container">
+                 <section style={{color: 'black',backgroundSize: 'cover', height: '350px', backgroundPosition:'center', backgroundImage: 'url(https://image.tmdb.org/t/p/original/'+detail.backdrop_path+')'}} class="py-5 text-center container">
                     <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">
-                        {detail.name && <h1 class="fw-light">{detail.name}</h1>}
-                        {detail.original_title && <h1 class="fw-light">{detail.original_title}</h1>}
-                        {/* <p class="lead text-muted">{short}</p> */}
+                        
                         <p>
- 
                         <a href="#" class="btn btn-secondary my-2">Showtimes</a>
                         </p>
                     </div>
                     </div>
 
                 </section>
-    
+                {detail.name && <h1 class="fw-light">{detail.name}</h1>}
+                {detail.original_title && <h1 class="fw-light">{detail.original_title}</h1>}
+                {detail.imdb_id && <a className="btn btn-info" href={"https://www.imdb.com/name/"+detail.imdb_id} target="_blank">IMDB</a>}
+                {detail.runtime && <p>{detail.runtime}m</p>}
+                {detail.budget && <p>Budget: ${detail.budget}</p>}
+                {detail.revenue && <p>Revenue: ${detail.revenue}</p>}
  
-                <div class="album py-5 bg-light">
+                <div class="album py-5 bg-dark">
                     <div class="container">
+                        
                     <h3 style={{color:'black', textAlign:'center'}}>Trailers</h3>
                     {youtube.map((youtube, i)=>{
                             if(youtube.type=="Trailer")

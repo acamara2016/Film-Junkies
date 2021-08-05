@@ -8,18 +8,13 @@ export default class Cast extends React.Component {
 
     render(){
         return(
-            <div id="elem" style={{marginBottom: '20px', height:'100%'}} className="col-sm">
-                <div class="card" style={{width: "18rem"}}>
+            <div style={{marginBottom: '20px', height:'100%'}} className="col-sm-4 cont">
                     {this.props.image!=null && 
                     <Link to={"../v1/actor/"+this.props.id}>
-                        <img src={"https://image.tmdb.org/t/p/original/"+this.props.image} class="card-img-top" alt={this.props.image} />
-                    </Link>}
-
-                    {this.props.image!=null && 
-                    <div style={{display:'flex', flexDirection:'row', justifyContent: 'center'}} class="card-body">
-                        <Link id="more" class="card-text" to={"../v1/actor/"+this.props.id} style={{width:'fit-content', height:'fit-content', padding:'10px',textAlign: "center", border:'1px solid', boxShadow:'5px 10px'}}>{this.props.name}</Link>
-                    </div>}
-                </div>
+                        <img width="150" className="image" height="225" style={{borderRadius:'15px',boxShadow:"0px 0px 9px 5px"}}   alt="..."  src={"https://image.tmdb.org/t/p/original/"+this.props.image}/>
+                    </Link>} 
+                    <p>{this.props.name}</p>
+    
             </div>
         );
     }

@@ -43,7 +43,7 @@ export default class ActorDetails extends React.Component {
         let bio_short = detail.biography
 
         return(
-             <div className="container" style={{color:'black', maxWidth:'-webkit-fill-available', textAlign:'start'}}>
+             <div className="container" style={{color:'black', maxWidth:'-webkit-fill-available', textAlign:'start',overflowY:'hidden'}}>
                  <br/><br/>
                  <ul style={{justifyContent: 'center'}} class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
