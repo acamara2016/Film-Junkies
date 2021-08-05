@@ -80,7 +80,7 @@ export default class SignUp extends React.Component{
             .then((response)=>{
                 console.log(response.success)
                  if(response.success === true) {
-                    window.location.href = "http://localhost:3000/movies"
+                    window.location.href = "/movies"
                  }
             },
             error => {

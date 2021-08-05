@@ -11,11 +11,11 @@ export default class TvPoster extends React.Component {
             <div style={{padding:'20px', width:'165px'}} className="col cont">
                     {this.props.redirect && 
                     <Link to={"../../tv/"+this.props.id}>
-                        <img loading="lazy" width="150" height="225" style={{borderRadius:'15px'}}   alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
+                        <img loading="lazy" width="150" height="225" style={{borderRadius:'15px',boxShadow:"0px 0px 9px 5px"}}    alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
                     </Link>} 
                     {!this.props.redirect && 
                     <Link to={"tv/"+this.props.id}>
-                        <img width="150" height="225" style={{borderRadius:'15px'}}  alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
+                        <img width="150" height="225" style={{borderRadius:'15px',boxShadow:"0px 0px 9px 5px"}}   alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
                     </Link>} 
                     <div style={{left:'50%'}} class="middle">
                         <a href={"/tv/"+this.props.id} class="text btn btn-primary">{this.props.name}</a>

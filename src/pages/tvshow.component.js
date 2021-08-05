@@ -42,15 +42,15 @@ export default class TvShow extends React.Component {
         })
         return(
 
-            <div style={{marginTop:'100px'}} className="container-fluid">
+            <div style={{marginTop:'56px'}} className="container-fluid">
                 {this.state.movies.map((playing, index) => {
                     const short = fn(playing.overview, 142);
                     if(index === 0)
-                        return (<div style={{textAlign:'start',backgroundImage:'url(https://image.tmdb.org/t/p/original/'+playing.backdrop_path+')', maxHeight:'600px',minHeight:'500px', backgroundSize:'cover'}} class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+                        return (<div style={{textAlign:'start',backgroundPosition:'center',backgroundImage:'url(https://image.tmdb.org/t/p/original/'+playing.backdrop_path+')', maxHeight:'600px',minHeight:'500px', backgroundSize:'cover'}} class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                         <div class="col-md-6 px-0 bg-text">
-                        <h1 style={{fontSize:'xx-large', color:'white'}} class="display-4 fst-italic">{playing.name}</h1>
-                        <p style={{fontSize:'inherit', color:'white'}} class="lead my-3">{short}</p>
-                        <p class="lead mb-0"><a href={"/movie/"+playing.id} class="btn btn-primary text-white fw-bold">Details</a></p>
+                        <h1 style={{fontSize:'xx-large', color:'white', textAlign:'start'}} class="display-4 fst-italic">{playing.name}</h1>
+                        <p style={{fontSize:'inherit', color:'white', textAlign:'start'}} class="lead my-3">{short}</p>
+                        <p style={{textAlign:'start'}} class="lead mb-0"><a href={"/movie/"+playing.id} class="btn btn-primary text-white fw-bold">Details</a></p>
                         </div></div>)
                 })}
                 {this.state.categories.map((category)=>{

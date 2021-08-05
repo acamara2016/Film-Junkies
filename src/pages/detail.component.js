@@ -68,15 +68,14 @@ export default class Details extends React.Component {
                         {detail.original_title && <h1 class="fw-light">{detail.original_title}</h1>}
                         {/* <p class="lead text-muted">{short}</p> */}
                         <p>
-                        {/* {youtube.map((youtube, i)=>{
-                            if(youtube.type=="Trailer")
-                                return <Example index={i} videoId={youtube.key} key={youtube.key} id={youtube.id}/>
-                            })} */}
+ 
                         <a href="#" class="btn btn-secondary my-2">Showtimes</a>
                         </p>
                     </div>
                     </div>
+
                 </section>
+    
  
                 <div class="album py-5 bg-light">
                     <div class="container">

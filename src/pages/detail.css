@@ -9,15 +9,31 @@
    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
    color: white;
    font-weight: bold;
-   border: 3px solid #f1f1f1;
+ 
    position: absolute;
-   top: 50%;
-   left: 50%;
+   top: 41%;
+   left: 30%;
    transform: translate(-50%, -50%);
    z-index: 2;
    width: 80%;
    padding: 20px;
    text-align: center;
+ }
+ .curved-background{
+   height: 100px;
+   background: #ec008c;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #fc6767, #ec008c);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #fc6767, #ec008c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   border-radius:0 0 50% 50%/0 0 100% 100%;
+   transform:scaleX(1.5);
+ }
+
+@media only screen and (max-width: 768px) {
+   /* For mobile phones: */
+   .bg-text{
+      top: 41%;
+      left: 48%;
+   }
  }
  
 #elem{

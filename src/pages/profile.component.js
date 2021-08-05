@@ -21,7 +21,7 @@ export default class Profile extends Component {
   }
   logOut() {
     AuthService.signout();
-    window.location.href = "http://localhost:3000/movies";
+    window.location.href = "/movies";
   }
 
   render() {

@@ -9,11 +9,11 @@ export default class MoviePoster extends React.Component {
       
                     {this.props.redirect && 
                     <Link to={"../../movie/"+this.props.id}>
-                        <img loading="lazy" width="150" height="225" style={{borderRadius:'15px'}}   alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
+                        <img loading="lazy" width="150" height="225" style={{borderRadius:'15px',boxShadow:"0px 0px 9px 5px"}}   alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
                     </Link>} 
                     {!this.props.redirect && 
                     <Link to={"movie/"+this.props.id}>
-                        <img width="150" className="image" height="225" style={{borderRadius:'15px'}}  alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
+                        <img width="150" className="image" height="225" style={{borderRadius:'15px',boxShadow:"0px 0px 9px 5px"}}   alt="..."  src={"https://image.tmdb.org/t/p/w220_and_h330_face/"+this.props.image}/>
                     </Link>} 
                     <div class="middle">
                         <a href={"/movie/"+this.props.id} class="text btn btn-primary">{this.props.name}</a>

@@ -44,15 +44,20 @@ export default class ActorDetails extends React.Component {
 
         return(
              <div className="container" style={{color:'black', maxWidth:'-webkit-fill-available', textAlign:'start'}}>
-                <div class="d-flex align-items-start">
-                <div style={{marginTop:"50px"}} class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Bio</button>
-                    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Movies</button>
-                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Shows</button>
-                </div>
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"> 
-                        <div style={{margin:'30px'}} className="row">
+                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div className="row">
                             <div className="col-sm-4">
                                 <h1 >{detail.name}</h1>
                                 <Cast id={detail.id} image={detail.profile_path}/>
@@ -71,29 +76,32 @@ export default class ActorDetails extends React.Component {
                             </div>
                         </div>
                         
-                    </div>
-                    
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <div style={{margin:"30px"}} className="row">
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div style={{margin:"30px"}} className="row">
                         <h1>{detail.name}</h1>
                         {movies.map((movie)=>{
                             if(movie.poster_path!=null)
-                                return (<MoviePoster redirect="../" id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>)
+                                return (<div className="col">
+                                <MoviePoster redirect="../" id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.title} vote_average={movie.vote_average} key={movie.id}/>
+                                </div>
+                                )
                         })}
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <div style={{margin:"30px"}} className="row">
+                   
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div style={{margin:"30px"}} className="row">
                         <h1  >{detail.name}</h1>
                             {tvs.map((movie)=>{
                                 if(movie.poster_path!=null)
                                     return (<TvPoster redirect="../" id={movie.id} image={movie.poster_path} date={movie.first_air_date} name={movie.name} vote_average={movie.vote_average} key={movie.id}/>)
                             })}
                         </div>
-                    </div>
+                   
                 </div>
                 </div>
-                    </div>
+            </div>
         )
     }
 }

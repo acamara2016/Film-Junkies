@@ -1,7 +1,8 @@
 import React from 'react';
 import Animate from '../animation/index'
 import Lottie from 'react-lottie';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom'; 
+import "./style.css";
 import animation from '../animation/community.json'
 export default class Welcome extends React.Component {
     render(){
@@ -19,7 +20,7 @@ export default class Welcome extends React.Component {
                     <h1 class="display-5 fw-bold lh-1 mb-3">Join our Community</h1>
                     <p class="lead">Here a FilmJunkies, we provide all information about actors, directors and their works. Our community rank the movie by posting votes and comments.</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button style={{color: 'white'}} type="button" class="btn  btn-lg px-4 me-md-2"><Link to="/register">GET STARTED</Link></button>
+                    <button  type="button" class="boutton  btn-lg px-4 me-md-2"><Link to="/register">GET STARTED</Link></button>
                     </div>
                 </div>  
                 </div>
