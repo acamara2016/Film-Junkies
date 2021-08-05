@@ -56,7 +56,7 @@ export default class Movie extends React.Component {
  
         const random = Math.floor(Math.random() * 18)+1;
         return(
-            <div style={{marginTop:'56px'}} className="container-fluid">
+            <div style={{marginTop:'56px', overflowX: 'hidden'}} className="container-fluid">
                 {this.state.playing.map((playing, index) => {
                     const short = fn(playing.overview, 142);
                     if(index === random)

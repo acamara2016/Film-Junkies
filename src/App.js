@@ -95,20 +95,18 @@ class App extends React.Component {
                         </div>
                     </Switch>
                 </div>
-                <footer class="navbar navbar-dark bg-dark mastfoot mt-auto">
-                  <div class="inner">
-                    <p>FilmJunkies © 2021 Designed by <a href="https://github.com/acamara2016">acamara</a>, join our community <a href="https://www.themoviedb.org/">TheMovieDB</a>.</p>
-                  </div>
-                </footer>
-                {/* <footer class="text-muted py-5 bg-dark navbar-dark">
-                <div class="container">
-                  <p class="float-end mb-1">
-                    <a href="#">Back to top</a>
-                  </p>
-                  <p class="mb-1">FilmJunkies © 2021</p>
-                  <p class="mb-0">Want to join our Community? <a href="/">Visit the homepage</a> or read our <a href="https://www.themoviedb.org/">getting started guide</a>.</p>
+                <div className="container">
+                  <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                    <p className="col-md-4 mb-0 text-muted">© 2021 FilmJunkies, by <a href="https://github.com/acamara2016">acamara</a></p>
+
+                    <a href="/" className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                      <img src={icon} width="42" height="30" className="d-inline-block align-top" alt=""/>
+                    </a>
+
+                  </footer>
                 </div>
-              </footer> */}
+                
+                
             </div>
       </div>
     );
