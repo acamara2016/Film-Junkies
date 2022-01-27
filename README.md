@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Movie Review website
 
 Project demo here: https://film-junkie.netlify.app/
 
